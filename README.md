@@ -2,6 +2,15 @@
 
 [Kynning á verkefni](https://youtu.be/EyRD1dVVDiU).
 
+## TODO
+
++ Skoða:
+  + 08.03.ajax
+  + 08.06.project
+  + 80.07.react-router
++ Byrja að setja upp útlit
++ Setja upp routers
+
 ## Routing
 
 Setja skal upp og nota react router.
