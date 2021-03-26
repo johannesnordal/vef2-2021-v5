@@ -1,14 +1,12 @@
-import { useParams } from 'react-router-dom';
-
 import { News } from './../components/news/News.jsx';
 
 export function NewsPage() {
-  const { id } = useParams();
+  const id = window.location.pathname;
 
   return  (
     <News 
       id={id}
-      link={`../`}
+      link={`/`}
       linkName={`Til baka`}
     />
   );

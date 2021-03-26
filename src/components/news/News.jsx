@@ -4,7 +4,7 @@ import s from './News.module.scss';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
-export function News({ id, link = '', linkName, limit = null }) {
+export function News({ id, link, linkName, limit = null }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);

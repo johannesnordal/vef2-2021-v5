@@ -11,7 +11,11 @@ export default function App() {
     <Layout>
       <Switch>
         <Route exact path="/" component={Index}/>
-        <Route path="/:id" component={NewsPage}/>
+        <Route path="/allar" component={NewsPage}/>
+        <Route path="/innlent" component={NewsPage}/>
+        <Route path="/erlent" component={NewsPage}/>
+        <Route path="/ithrottir" component={NewsPage}/>
+        <Route path="/menning" component={NewsPage}/>
         <Route component={NotFound}/>
       </Switch>
     </Layout>
