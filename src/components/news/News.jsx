@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import s from './News.module.scss';
+
 const apiUrl = process.env.REACT_APP_API_URL;
 
 export function News({ id, link = '', linkName, limit = null }) {
@@ -49,7 +51,7 @@ export function News({ id, link = '', linkName, limit = null }) {
   const news = (data && data.items) || [];
 
   return (
-    <div>
+    <div clasName={s.news}>
       <h2>{data.title}</h2>
       <ul>
         {news
