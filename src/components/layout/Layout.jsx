@@ -1,19 +1,17 @@
-
-// TODO sækja Sass
-import { Index } from './../../pages/Index.jsx';
+import s from './Layout.module.scss';
 
 export function Layout({ children }) {
-  // TODO setja upp layout fyrir vef
   return (
     <div>
       <header>
-        <h1>Rúv fréttir</h1>
+        <h1 className={s.header}>Rúv fréttir</h1>
         <main>
           {children}
         </main>
       </header>
-      <footer>
-        Fréttir frá <a href="https://www.ruv.is/">RÚV</a>
+      <footer className={s.footer}>
+        <hr className={s.line}></hr>
+        <p className={s.ruv}>Fréttir frá <a href="https://www.ruv.is/">RÚV</a></p>
       </footer>
     </div>
   );

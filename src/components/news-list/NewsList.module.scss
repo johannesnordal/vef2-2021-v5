@@ -1,0 +1,15 @@
+.news {
+    align-content: space-between;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.loading,
+.error {
+    padding: 0 1em 0 1em;
+}
+
+.card {
+    width: 30%;
+}

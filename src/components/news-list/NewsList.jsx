@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { News } from './../news/News.jsx';
+import s from './NewsList.module.scss';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -9,9 +10,11 @@ export function NewsList() {
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
 
-  let json;
 
   useEffect(() => {
+    
+    let json;
+
     async function fetchData() {
       try {
         const result = await fetch(apiUrl);
@@ -35,22 +38,26 @@ export function NewsList() {
 
   if (error) {
     return (
-      <p>Villa kom upp: {error}</p>
+      <div className={s.error}>
+        <p>Villa kom upp: {error}</p>
+      </div>
     );
   }
 
   if (loading) {
     return (
-      <p>Sæki gögn..</p>
+      <div className={s.loading}>
+        <p>Sæki gögn..</p>
+      </div>
     );
   }
 
   return (
     <section>
-      <div>
+      <div className={s.news}>
         {data.map((item, index) => {
           return (
-            <div key={index}>
+            <div key={index} className={s.card}>
               <News
                 id={item.id}
                 limit={5}

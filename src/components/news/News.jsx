@@ -5,18 +5,19 @@ import s from './News.module.scss';
 const apiUrl = process.env.REACT_APP_API_URL;
 
 export function News({ id, link = '', linkName, limit = null }) {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
 
-  const url = new URL(id, apiUrl);
-
-  let json;
-
   useEffect(() => {
     async function fetchData() {
+      setLoading(true);
+      setError(null);
+
+      let json;
+
       try {
-        const result = await fetch(url);
+        const result = await fetch(new URL(id, apiUrl));
 
         if (!result.ok) {
           throw new Error('Result not ok');
@@ -34,31 +35,41 @@ export function News({ id, link = '', linkName, limit = null }) {
     }
 
     fetchData();
-  }, []);
+  }, [id]);
 
   if (error) {
     return (
-      <p>Villa kom upp: {error}</p>
+      <div className={s.error}>
+        <p>Villa kom upp: {error}</p>
+      </div>
     );
   }
 
   if (loading) {
     return (
-      <p>Sæki gögn..</p>
+      <div className={s.loading}>
+        <p>Sæki gögn..</p>
+      </div>
     );
   }
 
   const news = (data && data.items) || [];
 
   return (
-    <div clasName={s.news}>
+    <div className={s.news}>
       <h2>{data.title}</h2>
       <ul>
         {news
             .filter((item, index) => limit === null || index < limit)
-            .map((item) => <li><a href={item.link}>{item.title}</a></li>)}
+            .map((item) => {
+              return (
+                <li>
+                  <a className={`${s.links}`} href={item.link}>{item.title}</a>
+                </li>
+              )
+            })}
       </ul>
-      <a href={link}>{linkName}</a>
+      <a className={`${s.links} ${s.navlink}`} href={link}>{linkName}</a>
     </div>
   );
 }

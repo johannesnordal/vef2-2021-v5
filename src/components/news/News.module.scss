@@ -1,3 +1,33 @@
+a.links {
+    color: black;
+}
+
+a.navlink {
+    font-weight: bold;
+    text-decoration: none;
+}
+
 .news {
-  background-color: pink;
+    background-color: #FFF8DC;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    margin: 1em;
+    padding: 0 1em 1em 1em;
+}
+
+.loading,
+.error {
+    margin: 1em;
+    padding: 0 1em 1em 1em;
+}
+
+ul {
+    margin-left: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+li {
+    margin-top: 0.5em;
 }
