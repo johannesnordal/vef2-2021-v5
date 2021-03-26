@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
+import { News } from './../news/News.jsx';
+
 const apiUrl = process.env.REACT_APP_API_URL;
 
 export function NewsList() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [data, setData] = useState(false);
+  const [data, setData] = useState([]);
 
   let json;
 
@@ -29,7 +31,7 @@ export function NewsList() {
       setData(json);
     }
     fetchData();
-  });
+  },[]);
 
   if (error) {
     return (
@@ -50,14 +52,14 @@ export function NewsList() {
           return (
             <div key={index}>
               <News
-                title={item.title}
                 id={item.id}
-                allNewsUrl={`\${item.id}`}
                 limit={5}
+                link={item.id}
+                linkName={`Allar fréttir`}
               />
             </div>
           );
-        })};
+        })}
       </div>
     </section>
   );
