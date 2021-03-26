@@ -2,4 +2,4 @@
 .env
 /src/pages/TestPage.jsx
 *.swp
-yarn.lock
+package-lock.json
