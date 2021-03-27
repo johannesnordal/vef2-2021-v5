@@ -11,7 +11,7 @@ export default function App() {
     <Layout>
       <Switch>
         <Route exact path="/" component={Index}/>
-        <Route exact path="/:id" children={NewsPage}/>
+        <Route path="/:id" component={NewsPage}/>
         <Route component={NotFound}/>
       </Switch>
     </Layout>
