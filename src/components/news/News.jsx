@@ -72,7 +72,7 @@ export function News(props) {
       <h2>{data.title}</h2>
       <ul>
         {news
-            .filter((item, index) => props.limit === null || index < props.limit)
+            .filter((item, index) => props.limit === undefined || index < props.limit)
             .map((item) => {
               return (
                 <li>
