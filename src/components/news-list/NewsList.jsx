@@ -10,7 +10,6 @@ export function NewsList() {
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
 
-
   useEffect(() => {
     
     let json;

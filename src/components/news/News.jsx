@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
+import { NotFound } from './../../pages/not-found/NotFound';
 import s from './News.module.scss';
 
 const apiUrl = process.env.REACT_APP_API_URL;
@@ -20,6 +21,7 @@ export function News(props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
+  const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -30,6 +32,11 @@ export function News(props) {
 
       try {
         const result = await fetch(new URL(props.id, apiUrl));
+
+        if (result.status === 404) {
+          setNotFound(true);
+          return;
+        }
 
         if (!result.ok) {
           throw new Error('Result not ok');
@@ -48,6 +55,10 @@ export function News(props) {
 
     fetchData();
   }, [props.id]);
+
+  if (notFound) {
+    return <NotFound />;
+  }
 
   if (error) {
     return (
