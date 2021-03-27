@@ -11,11 +11,11 @@ export default function App() {
     <Layout>
       <Switch>
         <Route exact path="/" component={Index}/>
-        <Route path="/allar" component={NewsPage}/>
-        <Route path="/innlent" component={NewsPage}/>
-        <Route path="/erlent" component={NewsPage}/>
-        <Route path="/ithrottir" component={NewsPage}/>
-        <Route path="/menning" component={NewsPage}/>
+        <Route exact path="/allar" component={NewsPage}/>
+        <Route exact path="/innlent" component={NewsPage}/>
+        <Route exact path="/erlent" component={NewsPage}/>
+        <Route exact path="/ithrottir" component={NewsPage}/>
+        <Route exact path="/menning" component={NewsPage}/>
         <Route component={NotFound}/>
       </Switch>
     </Layout>
