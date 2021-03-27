@@ -11,7 +11,7 @@ export function Layout({ children }) {
       </header>
       <footer className={s.footer}>
         <hr className={s.line}></hr>
-        <p className={s.ruv}>Fréttir frá <a href="https://www.ruv.is/">RÚV</a></p>
+        <p className={s.link}>Fréttir frá <a href="https://www.ruv.is/">RÚV</a></p>
       </footer>
     </div>
   );

@@ -1,10 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 import s from './News.module.scss';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
-export function News({ id, link, linkName, limit = null }) {
+News.propTypes = {
+  id: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+  linkName: PropTypes.string.isRequired,
+  limit: PropTypes.number,
+}
+
+News.defaultProps = {
+  limit: undefined,
+}
+
+export function News(props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
@@ -17,7 +29,7 @@ export function News({ id, link, linkName, limit = null }) {
       let json;
 
       try {
-        const result = await fetch(new URL(id, apiUrl));
+        const result = await fetch(new URL(props.id, apiUrl));
 
         if (!result.ok) {
           throw new Error('Result not ok');
@@ -35,7 +47,7 @@ export function News({ id, link, linkName, limit = null }) {
     }
 
     fetchData();
-  }, [id]);
+  }, [props.id]);
 
   if (error) {
     return (
@@ -60,7 +72,7 @@ export function News({ id, link, linkName, limit = null }) {
       <h2>{data.title}</h2>
       <ul>
         {news
-            .filter((item, index) => limit === null || index < limit)
+            .filter((item, index) => props.limit === null || index < props.limit)
             .map((item) => {
               return (
                 <li>
@@ -69,7 +81,7 @@ export function News({ id, link, linkName, limit = null }) {
               )
             })}
       </ul>
-      <a className={`${s.links} ${s.navlink}`} href={link}>{linkName}</a>
+      <a className={`${s.links} ${s.navlink}`} href={props.link}>{props.linkName}</a>
     </div>
   );
 }
